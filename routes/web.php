@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +35,17 @@ Route::get('/about', function () {
 
 Route::get('/contact', [ContactController::class, 'index']);
 
+//Category Controller
+Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
+
 // Route::get('/contact', [ContactController::class, 'index'])->name('con');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+
+        //Query Builder
+        //$users = DB::table('users)->get();
+        //use Illuminate\Support\Facades\DB;
+
+
+    $users = User::all();
+    return view('dashboard', compact('users'));
 })->name('dashboard');
