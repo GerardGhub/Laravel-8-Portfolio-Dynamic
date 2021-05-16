@@ -11,8 +11,21 @@
 
     <div class="container">
     <div class="row">
+
+
+
+
+
     <div class="col-md-8">
     <div class="card">
+  @if(session('success'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{ session('success') }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
     <div class="card-header">All Category</div>
 
 
@@ -22,22 +35,35 @@
   <thead>
     <tr>
       <th scope="col">SL No</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
+      <th scope="col">Category Name</th>
+      <th scope="col">User</th>
       <th scope="col">Created At</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
-
+  <tbody>
+  <!-- @php($i = 1) -->
+  @foreach($categories as $category)
     <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">{{$categories->firstItem()+$loop->index }}</th>
+      <td>{{ $category->category_name}}</td>
+      <td>{{ $category->name }}</td>
+      <td>
+      @if($category->created_at == NULL)
+      <span class="text-danger">No Date Set</span>
+      @else
+      {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}
+      @endif
+      </td>
+      <td>
+      <a href="{{ url('category/edit/'.$category->id)}}" class="btn btn-info">Edit</a>
+      <a href="" class="btn btn-danger">Delete</a>
+      </td>
     </tr>
-
+  @endforeach
   </tbody>
 </table>
-    
+    {{ $categories->links() }}
         
 </div>
     </div>
