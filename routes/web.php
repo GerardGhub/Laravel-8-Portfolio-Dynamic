@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,15 +38,16 @@ Route::get('/contact', [ContactController::class, 'index']);
 
 //Category Controller
 Route::get('/category/all', [CategoryController::class, 'AllCat'])->name('all.category');
+Route::post('/category/add', [CategoryController::class, 'AddCat'])->name('store.category');
 
 // Route::get('/contact', [ContactController::class, 'index'])->name('con');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
         //Query Builder
-        //$users = DB::table('users)->get();
-        //use Illuminate\Support\Facades\DB;
+        $users = DB::table('users')->get();
+        
 
-
-    $users = User::all();
+        // Ellequent ORM
+    // $users = User::all();
     return view('dashboard', compact('users'));
 })->name('dashboard');
