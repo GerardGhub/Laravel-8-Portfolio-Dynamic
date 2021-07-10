@@ -66,10 +66,14 @@ Route::post('/multi/add', [BrandController::class, 'StoreImg'])->name('store.ima
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
         //Query Builder
-        $users = DB::table('users')->get();
+        // $users = DB::table('users')->get();
         
 
         // Ellequent ORM
     // $users = User::all();
-    return view('dashboard', compact('users'));
+    
+    // return view('admin.index', compact('users'));
+
+    return view('admin.index');
 })->name('dashboard');
+Route::get('/user/logout', [BrandController::class, 'Logout'])->name('user.logout');

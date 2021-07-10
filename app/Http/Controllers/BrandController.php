@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Multipic;
 use Illuminate\Support\Carbon;
 use Image;
+use Auth;
 
 class BrandController extends Controller
 {
@@ -148,4 +149,10 @@ class BrandController extends Controller
     } //end of the foreach
        return Redirect()->back()->with('success','Multi Image Inserted Successfully');
     }
+
+    public function Logout(){
+        Auth::logout();
+        return Redirect()->route('login')->with('success','User Logout');
+    }
+
 }
