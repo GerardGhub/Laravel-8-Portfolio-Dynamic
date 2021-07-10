@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -50,6 +54,14 @@ Route::get('/pdelete/category/{id}', [CategoryController::class, 'Pdelete']);
 // For Brand Controller
 Route::get('/brand/all', [BrandController::class, 'AllBrand'])->name('all.brand');
 Route::post('/brand/add', [BrandController::class, 'StoreBrand'])->name('store.brand');
+Route::get('/brand/edit/{id}', [BrandController::class, 'Edit']);
+Route::post('/brand/update/{id}', [BrandController::class, 'Update']);
+Route::get('/brand/delete/{id}', [BrandController::class, 'Delete']);
+
+//Multi Image Route
+Route::get('/multi/image', [BrandController::class, 'Multipic'])->name('multi.image');
+Route::post('/multi/add', [BrandController::class, 'StoreImg'])->name('store.image');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
