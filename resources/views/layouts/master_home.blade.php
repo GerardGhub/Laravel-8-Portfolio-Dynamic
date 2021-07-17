@@ -42,10 +42,7 @@
   <!-- Header -->
   @include('layouts.body.header')
   <!-- End Header -->
-<!--   
-  Slider Starrt -->
-  @include('layouts.body.slider')
-  <!-- End Slider -->
+
 
   <main id="main">
 
@@ -55,7 +52,7 @@
 
   <!-- Footer -->
   @include('layouts.body.footer')
-  <a href="#" class="back-to-top">asas<i class="icofont-simple-up"></i></a>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('frontend/assets/vendor/jquery/jquery.min.js')}}"></script>
