@@ -1,6 +1,6 @@
  @extends('layouts.master_home')
 
-
+  @include('layouts.body.slider')
 
  @section('home_content')
  
@@ -33,7 +33,7 @@
 
         <div class="section-title">
           <h2>Services</strong></h2>
-          <p>Laborum repudiandae omnis voluptatum consequatur mollitia ea est voluptas ut</p>
+          <p>Takla Programmer</p>
         </div>
 
         <div class="row">
