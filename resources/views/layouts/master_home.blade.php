@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Company Bootstrap Template - Index</title>
+  <title>Gerard Singian</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -52,7 +52,7 @@
 
   <!-- Footer -->
   @include('layouts.body.footer')
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <a href="#" class="back-to-top"><i> &#8593 </i></a>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('frontend/assets/vendor/jquery/jquery.min.js')}}"></script>

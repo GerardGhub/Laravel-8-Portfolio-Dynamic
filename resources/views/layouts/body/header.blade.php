@@ -2,7 +2,7 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html"><span>Kabayong</span>Programmer</a></h1>
+      <h1 class="logo mr-auto"><a href="index.html"><span>BUJE</span>CODING</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -27,13 +27,16 @@
             </ul>
           </li>
 
-          <li><a href="services.html">Services</a></li>
+          <li><a href="#services.html">Services</a></li>
           <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#pricing.html">Pricing</a></li>
+          <li><a href="#blog.html">Blog</a></li>
           <li><a href="{{ route('contact') }}">Contact</a></li>
+          <li><a href="{{ route('login') }}">Login</a></li>
 
         </ul>
+
+        
       </nav><!-- .nav-menu -->
 
       <div class="header-social-links">

@@ -23,10 +23,11 @@
   <!-- SLEEK CSS -->
   <link id="sleek-css" rel="stylesheet" href="{{ asset('backend/assets/css/sleek.css')}}" />
 
-  
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
 
   <!-- FAVICON -->
-  <link href="{{ asset('backend/assets/img/favicon.png')}}" rel="shortcut icon" />
+  <link href="asset/img/favicon.png" rel="shortcut icon" />
 
   <!--
     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -148,7 +149,7 @@
                       </li>
 
                       <li>
-                        <a href="profile.html">
+                        <a href="{{ route('profile.update') }}">
                           <i class="mdi mdi-account"></i> My Profile
                         </a>
                       </li>
@@ -193,10 +194,10 @@
                   <footer class="footer mt-auto">
             <div class="copyright bg-white">
               <p>
-                &copy; <span id="copy-year">2021</span> Copyright Sleek Dashboard Bootstrap Template by
+                &copy; <span id="copy-year">2021</span> Copyright
                 <a
                   class="text-primary"
-                  href="http://www.iamabdus.com/"
+                  href="#http://www.iamabdus.com/"
                   target="_blank"
                   >Abdus</a
                 >.
@@ -234,8 +235,31 @@
 <script src="{{ asset('backend/assets/js/map.js')}}"></script>
 <script src="{{ asset('backend/assets/js/custom.js')}}"></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+<script>
+@if(Session::has('message'))
+var type = "{{ Session::get('alert-type','info') }}"
+switch(type){
+  case 'info':
+toastr.info(" {{ Session::get('message') }}");
+    break;
 
+    case 'success':
+toastr.success(" {{ Session::get('message') }}");
+    break;
+
+    case 'warning':
+toastr.warning(" {{ Session::get('message') }}");
+    break;
+
+    case 'error':
+toastr.error(" {{ Session::get('message') }}");
+    break;
+}
+
+@endif
+  </script>
 
   </body>
 </html>

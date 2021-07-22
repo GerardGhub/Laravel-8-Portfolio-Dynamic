@@ -23,12 +23,12 @@ class BrandController extends Controller
     public function StoreBrand(Request $request){
         $validatedData = $request -> validate([
             'brand_name' => 'required|unique:brands|min:4',
-            'brand_image' => 'required|mimes:jpg.jpeg,png',
+            // 'brand_image' => 'required|mimes:jpg.jpeg,png',
 
         ],
         [
            'brand_name.required' => 'Please Input Brand Name',
-           'brand_image.min' => 'Brand Longer then 4 Characters',
+        //    'brand_image.min' => 'Brand Longer then 4 Characters',
        
        
        ]);
@@ -43,7 +43,7 @@ class BrandController extends Controller
     //    $brand_image->move($up_location,$img_name);
 
     $name_gen = hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
-    Image::make($brand_image)->resize(300,200)->save('image/brand'.$name_gen);
+    Image::make($brand_image)->resize(300,200)->save('image/brand/'.$name_gen);
 
     $last_img = 'image/brand/'.$name_gen;
 
@@ -53,7 +53,12 @@ class BrandController extends Controller
            'created_at' => Carbon::now()
        ]);
 
-       return Redirect()->back()->with('success','Brand Inserted Successfully');
+
+       $notification = array(
+        'message' => 'Brand Inserted Successfully',
+        'alert-type' => 'success'
+       );
+       return Redirect()->back()->with($notification);
     }
 
     public function Edit($id){
@@ -90,8 +95,13 @@ class BrandController extends Controller
             'brand_image' => $last_img,
             'created_at' => Carbon::now()
         ]);
- 
-        return Redirect()->back()->with('success','Brand Updated Successfully');
+
+        $notification = array(
+            'message' => 'Brand Updated Successfully',
+            'alert-type' => 'info'
+           );
+
+        return Redirect()->back()->with($notification);
 
        }else{
         
@@ -99,8 +109,12 @@ class BrandController extends Controller
             'brand_name' => $request->brand_name,
             'created_at' => Carbon::now()
         ]);
+        $notification = array(
+            'message' => 'Brand Updated Successfully',
+            'alert-type' => 'warning'
+           );
  
-        return Redirect()->back()->with('success','Brand Updated Successfully');
+        return Redirect()->back()->with($notification);
        }
 
       
@@ -111,7 +125,11 @@ class BrandController extends Controller
         unlink($old_image);
 
         Brand::find($id)->delete();
-        return Redirect()->back()->with('success','Brand Deleted Successfully');
+        $notification = array(
+            'message' => 'Brand Deleted Successfully',
+            'alert-type' => 'error'
+           );
+        return Redirect()->back()->with($notification);
     }
 
     //This is for multi image for all method
